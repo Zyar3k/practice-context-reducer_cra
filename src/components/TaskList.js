@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
 import { GlobalContext } from "../context/GlobalContext";
 
 const TaskList = () => {
@@ -6,7 +8,6 @@ const TaskList = () => {
   console.log(tasks);
   return (
     <div className="flex justify-center">
-      <button onClick={() => deleteTask()}>Delete all</button>
       <div className="w-6/12">
         {tasks.map((task) => (
           <div
@@ -18,8 +19,19 @@ const TaskList = () => {
               <h6>{task.id}</h6>
             </div>
             <div>
-              <button>EDIT</button>
-              <button>DELETE</button>
+              <Link
+                to={`/edit/${task.id}`}
+                className="bg-gray-600 hover:bg-gray-500 py-2 px-4 mr-2"
+              >
+                EDIT
+              </Link>
+
+              <button
+                onClick={() => deleteTask(task.id)}
+                className="bg-red-600 hover:bg-red-500 py-2 px-4 mr-2"
+              >
+                DELETE
+              </button>
             </div>
           </div>
         ))}
