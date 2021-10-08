@@ -17,6 +17,7 @@ const TaskList = () => {
             <div>
               <h1>{task.title}</h1>
               <h6>{task.id}</h6>
+              <p>{task.description}</p>
             </div>
             <div>
               <Link
