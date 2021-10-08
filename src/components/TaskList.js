@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalContext";
 
 const TaskList = () => {
-  const { tasks, deleteTask } = useContext(GlobalContext);
+  const { tasks, deleteTask, toggleTaskDone } = useContext(GlobalContext);
   console.log(tasks);
   return (
     <div className="flex justify-center">
@@ -18,6 +18,13 @@ const TaskList = () => {
               <h1>{task.title}</h1>
               <h6>{task.id}</h6>
               <p>{task.description}</p>
+
+              <button
+                onClick={() => toggleTaskDone(task.id)}
+                className="bg-purple-600 hover:bg-purple-500 py-1 px-3 mt-2 "
+              >
+                {task.done ? "Undone" : "Done"}
+              </button>
             </div>
             <div>
               <Link
